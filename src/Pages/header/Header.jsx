@@ -111,7 +111,7 @@ const Header = () => {
       {/* Mobile menu */}
       {isOpen && (
         <nav className="md:hidden mt-2 rounded-2xl overflow-hidden backdrop-blur-md bg-white/10 border border-white/20 shadow-lg">
-          <Link to="/about" onClick={() => setIsOpen(false)} className="flex items-center gap-3 px-6 py-3 text-white hover:bg-white/20 transition-all duration-200 share-tech">
+          <Link to="/project" onClick={() => setIsOpen(false)} className="flex items-center gap-3 px-6 py-3 text-white hover:bg-white/20 transition-all duration-200 share-tech">
             <div className="w-8 h-8 rounded-full border border-purple-500/40 bg-purple-900/20 flex items-center justify-center text-sm">
               👨‍💻
             </div>
