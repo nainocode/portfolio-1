@@ -1,45 +1,59 @@
+
 import React from 'react';
-import './Slider.css'; // Import custom CSS for animations
+import './Slider.css';
 import { FaCss3Alt, FaHtml5 } from 'react-icons/fa';
-import { MdCss } from 'react-icons/md';
 import { RiJavascriptFill } from 'react-icons/ri';
 import { IoLogoDocker, IoLogoReact } from 'react-icons/io5';
 import { DiNodejs } from 'react-icons/di';
 import { SiMongodb } from 'react-icons/si';
 
+const icons = [
+  { icon: <FaHtml5 />, bg: '#DE4B25', size: 'text-5xl' },
+  { icon: <FaCss3Alt />, bg: '#006AB2', size: 'text-5xl' },
+  { icon: <RiJavascriptFill />, bg: '#EAB308', size: 'text-5xl' },
+  { icon: <IoLogoReact />, bg: '#52D7F1', size: 'text-5xl' },
+  { icon: <DiNodejs />, bg: '#76C50A', size: 'text-7xl' },
+  { icon: <SiMongodb />, bg: '#166534', size: 'text-7xl' },
+  { icon: <IoLogoDocker />, bg: '#019AFA', size: 'text-7xl' },
+];
+
 const Slider = () => {
   return (
-    <>
-      <div className="main w-[100%] h-[100vh] bg-[#2e0043] ">
-        
-        <h1 className="text-2xl w-[150px] p-2 mx-auto rounded-bl-4xl rounded-tr-4xl  text-white block text-center share-tech bg-gradient-to-r from-[#15001F] shadow-[#2e0043] shadow-xl via-[#2e0043] to-[black] ... ">My Skills</h1>
-        <div className="bounce flex justify-center items-center mt-36 gap-20 h-full">
-          <div className="goal  flex justify-center items-center w-[100px] h-[100px] rounded-full text-white text-5xl bg-[#DE4B25] animate-bounce-1 border-2 border-black">
-          <FaHtml5 />
+    <div className="main w-full min-h-screen bg-[#2e0043] py-10">
+
+      <h1 className="text-2xl w-[150px] p-2 mx-auto rounded-bl-4xl rounded-tr-4xl text-white block text-center share-tech bg-gradient-to-r from-[#15001F] shadow-[#2e0043] shadow-xl via-[#2e0043] to-black">
+        My Skills
+      </h1>
+
+      {/* DESKTOP: bounce grid - same as before */}
+      <div className="hidden md:flex justify-center items-center gap-20 mt-60">
+        {icons.map((item, i) => (
+          <div
+            key={i}
+            className={`flex justify-center items-center w-[100px] h-[100px] rounded-full text-white ${item.size} animate-bounce-${i + 1}`}
+            style={{ backgroundColor: item.bg }}
+          >
+            {item.icon}
           </div>
-          <div className="goal flex justify-center items-center w-[100px] h-[100px] rounded-full text-white text-5xl bg-[#006AB2] animate-bounce-2">
-          <FaCss3Alt />
-          </div>
-          <div className="goal flex justify-center items-center w-[100px] h-[100px] rounded-full text-white text-5xl bg-yellow-400 animate-bounce-3">
-          <RiJavascriptFill />
-          </div>
-          <div className="goal flex justify-center items-center w-[100px] h-[100px] rounded-full text-white text-5xl bg-[#52D7F1] animate-bounce-4">
-          <IoLogoReact />
-          </div>
-          <div className="goal flex justify-center items-center w-[100px] h-[100px] rounded-full text-white text-7xl bg-[#76C50A] animate-bounce-5">
-          <DiNodejs />
-          </div>
-          <div className="goal flex justify-center items-center w-[100px] h-[100px] rounded-full text-white text-7xl bg-green-800 animate-bounce-6">
-          <SiMongodb />
-          </div>
-          <div className="goal flex justify-center items-center w-[100px] h-[100px] rounded-full text-white text-7xl bg-[#019AFA] animate-bounce-7 ">
-          <IoLogoDocker />
-          </div>
-          
-        </div>
+        ))}
       </div>
-    </>
+
+      {/* MOBILE: 2 per row grid */}
+      <div className="grid md:hidden grid-cols-2 gap-6 mt-10 px-8">
+        {icons.map((item, i) => (
+          <div
+            key={i}
+            className={`flex justify-center items-center w-[100px] h-[100px] rounded-full text-white ${item.size} mx-auto`}
+            style={{ backgroundColor: item.bg }}
+          >
+            {item.icon}
+          </div>
+        ))}
+      </div>
+
+    </div>
   );
 };
 
 export default Slider;
+
